@@ -45,38 +45,37 @@ public class BracketsOpenClosedTest {
 
     public String isValid(String s) {
 
-        char openCurly = '{';
-        char closedCurly = '}';
-        char openRound = '(';
-        char closedRound = ')';
+        final char openCurly = '{';
+        final char closedCurly = '}';
+        final char openRound = '(';
+        final char closedRound = ')';
 
         Stack<Character> stack = new Stack<>();
 
         for (int i = 0; i < s.length(); i++) {
-            char current = s.charAt(i);
-            if (current == openCurly || current == openRound) {
-                // if open, add
-                stack.add(current);
-            }
-            if (current == closedCurly) {
-                if (stack.isEmpty()) { // if the first is closed, invalid
-                    return "invalid";
-                } else if (stack.peek() == openCurly) { // if the previous makes the pair, remove both
-                    stack.pop();
-                } else {
-                    return "invalid"; // if the previous does not make the pair, invalid
-                }
-            }
-            if (current == closedRound) {
-                if (stack.isEmpty()) {
-                    return "invalid";
-                } else if (stack.peek() == openRound) {
-                    stack.pop();
-                } else {
-                    return "invalid";
-                }
-            }
+            char currentChar = s.charAt(i);
 
+            switch (currentChar) {
+                case openCurly, openRound -> stack.add(currentChar);
+                case closedCurly -> {
+                    if (stack.isEmpty()) { // if the first is closed, invalid
+                        return "invalid";
+                    } else if (stack.peek() == openCurly) { // if the previous makes the pair, remove both
+                        stack.pop();
+                    } else {
+                        return "invalid"; // if the previous does not make the pair, invalid
+                    }
+                }
+                case closedRound -> {
+                    if (stack.isEmpty()) {
+                        return "invalid";
+                    } else if (stack.peek() == openRound) {
+                        stack.pop();
+                    } else {
+                        return "invalid";
+                    }
+                }
+            }
         }
         if (stack.size() == 0) {
             return "valid";
