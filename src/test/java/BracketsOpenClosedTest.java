@@ -17,7 +17,7 @@ public class BracketsOpenClosedTest {
     @Test
     @DisplayName("Test {()()}")
     void secondTest() {
-        String testString = "{}()";
+        String testString = "{()()}";
         assertEquals(isValid(testString), "valid");
     }
 
