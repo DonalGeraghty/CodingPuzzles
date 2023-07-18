@@ -73,17 +73,20 @@ public class BracketsOpenClosedTest {
             for (int i = 0; i < s.length(); i++) {
                 char currentChar = s.charAt(i);
 
-                switch (currentChar) {
-                    case openCurly, openRound -> stack.add(currentChar);
-                    case closedCurly -> {
+                switch (currentChar){
+                    case openCurly:
+                        stack.add(currentChar);
+                        break;
+                    case openRound:
+                        stack.add(currentChar);
+                        break;
+                    case closedCurly:
                         return handleClosedBracket(stack, openCurly);
-                    }
-                    case closedRound -> {
+                    case closedRound:
                         return handleClosedBracket(stack, openRound);
-                    }
-                    default -> {
+                    default:
                         return invalid;
-                    }
+                
                 }
             }
             return stack.size() == 0 ? valid : invalid;
