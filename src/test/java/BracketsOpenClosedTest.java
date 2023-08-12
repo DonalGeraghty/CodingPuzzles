@@ -86,7 +86,7 @@ public class BracketsOpenClosedTest {
                         return handleClosedBracket(stack, openRound);
                     default:
                         return invalid;
-                
+
                 }
             }
             return stack.size() == 0 ? valid : invalid;
