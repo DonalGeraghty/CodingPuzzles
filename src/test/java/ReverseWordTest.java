@@ -34,6 +34,13 @@ public class ReverseWordTest {
         assertEquals("nortlu", reverseLetter(word));
     }
 
+    @Test
+    @DisplayName("Test donal is lanod")
+    void thirdTest() {
+        String word = "donal";
+        assertEquals("lanod", reverseLetter(word));
+    }
+
     public static String reverseLetter(final String str) {
         char[] arr = str.toCharArray();
         StringBuilder s = new StringBuilder();
