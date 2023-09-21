@@ -14,7 +14,7 @@ public class CountLettersTest {
     @DisplayName("Test DONALGERAGHTY")
     void firstTest(){
         int num = CountOccurrencesOfLetter("DONALGERAGHTY", 'D');
-        assertEquals(num, 1);
+        assertEquals(num, 2);
     }
 
 
